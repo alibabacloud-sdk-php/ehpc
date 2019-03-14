@@ -5,11 +5,11 @@ namespace AlibabaCloud\EHPC\V20180412;
 use AlibabaCloud\Rpc;
 
 /**
- * Api DescribeCluster
+ * Api ListInstalledSoftware
  *
  * @method string getClusterId()
  */
-class DescribeCluster extends Rpc
+class ListInstalledSoftware extends Rpc
 {
     public $product = 'EHPC';
 

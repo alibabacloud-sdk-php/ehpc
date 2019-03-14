@@ -5,14 +5,14 @@ namespace AlibabaCloud\EHPC\V20180412;
 use AlibabaCloud\Rpc;
 
 /**
- * Api ListNodesNoPaging
+ * Api GetAccountingReport
  *
- * @method string getHostName()
- * @method string getRole()
+ * @method string getReportType()
+ * @method string getEndTime()
  * @method string getClusterId()
- * @method string getOnlyDetached()
+ * @method string getStartTime()
  */
-class ListNodesNoPaging extends Rpc
+class GetAccountingReport extends Rpc
 {
     public $product = 'EHPC';
 
@@ -21,27 +21,27 @@ class ListNodesNoPaging extends Rpc
     public $serviceCode = 'ehs';
 
     /**
-     * @param string $hostName
+     * @param string $reportType
      *
      * @return $this
      */
-    public function withHostName($hostName)
+    public function withReportType($reportType)
     {
-        $this->data['HostName'] = $hostName;
-        $this->options['query']['HostName'] = $hostName;
+        $this->data['ReportType'] = $reportType;
+        $this->options['query']['ReportType'] = $reportType;
 
         return $this;
     }
 
     /**
-     * @param string $role
+     * @param string $endTime
      *
      * @return $this
      */
-    public function withRole($role)
+    public function withEndTime($endTime)
     {
-        $this->data['Role'] = $role;
-        $this->options['query']['Role'] = $role;
+        $this->data['EndTime'] = $endTime;
+        $this->options['query']['EndTime'] = $endTime;
 
         return $this;
     }
@@ -60,14 +60,14 @@ class ListNodesNoPaging extends Rpc
     }
 
     /**
-     * @param string $onlyDetached
+     * @param string $startTime
      *
      * @return $this
      */
-    public function withOnlyDetached($onlyDetached)
+    public function withStartTime($startTime)
     {
-        $this->data['OnlyDetached'] = $onlyDetached;
-        $this->options['query']['OnlyDetached'] = $onlyDetached;
+        $this->data['StartTime'] = $startTime;
+        $this->options['query']['StartTime'] = $startTime;
 
         return $this;
     }
