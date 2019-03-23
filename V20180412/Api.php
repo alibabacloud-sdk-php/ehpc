@@ -2,7 +2,102 @@
 
 namespace AlibabaCloud\EHPC\V20180412;
 
+use AlibabaCloud\ApiResolverTrait;
 use AlibabaCloud\Rpc;
+
+/**
+ * Resolve Api based on the method name.
+ *
+ * @method GetAccountingReport getAccountingReport(array $options = [])
+ * @method InstallSoftware installSoftware(array $options = [])
+ * @method UninstallSoftware uninstallSoftware(array $options = [])
+ * @method ListInstalledSoftware listInstalledSoftware(array $options = [])
+ * @method ListNodesByQueue listNodesByQueue(array $options = [])
+ * @method SetQueue setQueue(array $options = [])
+ * @method DeleteQueue deleteQueue(array $options = [])
+ * @method AddQueue addQueue(array $options = [])
+ * @method ListCpfsFileSystems listCpfsFileSystems(array $options = [])
+ * @method ListAvailableFileSystemTypes listAvailableFileSystemTypes(array $options = [])
+ * @method StopVisualService stopVisualService(array $options = [])
+ * @method StartVisualService startVisualService(array $options = [])
+ * @method GetVisualServiceStatus getVisualServiceStatus(array $options = [])
+ * @method ModifyVisualServicePasswd modifyVisualServicePasswd(array $options = [])
+ * @method ListClustersMeta listClustersMeta(array $options = [])
+ * @method CreateJobFile createJobFile(array $options = [])
+ * @method ListFileSystemWithMountTargets listFileSystemWithMountTargets(array $options = [])
+ * @method ListAvailableEcsTypes listAvailableEcsTypes(array $options = [])
+ * @method ListQueues listQueues(array $options = [])
+ * @method DescribeImagePrice describeImagePrice(array $options = [])
+ * @method DescribePrice describePrice(array $options = [])
+ * @method ListCloudMetricProfilings listCloudMetricProfilings(array $options = [])
+ * @method RunCloudMetricProfiling runCloudMetricProfiling(array $options = [])
+ * @method GetCloudMetricProfiling getCloudMetricProfiling(array $options = [])
+ * @method AddLocalNodes addLocalNodes(array $options = [])
+ * @method GetCloudMetricLogs getCloudMetricLogs(array $options = [])
+ * @method PullImage pullImage(array $options = [])
+ * @method ModifyImageGatewayConfig modifyImageGatewayConfig(array $options = [])
+ * @method ListContainerImages listContainerImages(array $options = [])
+ * @method DescribeImage describeImage(array $options = [])
+ * @method DescribeImageGatewayConfig describeImageGatewayConfig(array $options = [])
+ * @method DeleteImage deleteImage(array $options = [])
+ * @method CreateHybridCluster createHybridCluster(array $options = [])
+ * @method GetHybridClusterConfig getHybridClusterConfig(array $options = [])
+ * @method ModifyContainerAppAttributes modifyContainerAppAttributes(array $options = [])
+ * @method ListContainerApps listContainerApps(array $options = [])
+ * @method DescribeContainerApp describeContainerApp(array $options = [])
+ * @method DeleteContainerApps deleteContainerApps(array $options = [])
+ * @method AddContainerApp addContainerApp(array $options = [])
+ * @method ListCommands listCommands(array $options = [])
+ * @method ListInvocationStatus listInvocationStatus(array $options = [])
+ * @method ListInvocationResults listInvocationResults(array $options = [])
+ * @method InvokeShellCommand invokeShellCommand(array $options = [])
+ * @method DescribeAutoScaleConfig describeAutoScaleConfig(array $options = [])
+ * @method RecoverCluster recoverCluster(array $options = [])
+ * @method StopNodes stopNodes(array $options = [])
+ * @method StartCluster startCluster(array $options = [])
+ * @method StartNodes startNodes(array $options = [])
+ * @method StopCluster stopCluster(array $options = [])
+ * @method StopJobs stopJobs(array $options = [])
+ * @method ListClusters listClusters(array $options = [])
+ * @method ListRegions listRegions(array $options = [])
+ * @method ListNodesNoPaging listNodesNoPaging(array $options = [])
+ * @method ListJobs listJobs(array $options = [])
+ * @method ModifyUserPasswords modifyUserPasswords(array $options = [])
+ * @method ListPreferredEcsTypes listPreferredEcsTypes(array $options = [])
+ * @method GetAutoScaleConfig getAutoScaleConfig(array $options = [])
+ * @method ModifyUserGroups modifyUserGroups(array $options = [])
+ * @method SetAutoScaleConfig setAutoScaleConfig(array $options = [])
+ * @method EditJobTemplate editJobTemplate(array $options = [])
+ * @method AddNodes addNodes(array $options = [])
+ * @method DeleteUsers deleteUsers(array $options = [])
+ * @method ListImages listImages(array $options = [])
+ * @method DeleteJobs deleteJobs(array $options = [])
+ * @method DeleteNodes deleteNodes(array $options = [])
+ * @method ListCustomImages listCustomImages(array $options = [])
+ * @method ResetNodes resetNodes(array $options = [])
+ * @method SetJobUser setJobUser(array $options = [])
+ * @method ListJobTemplates listJobTemplates(array $options = [])
+ * @method ListSoftwares listSoftwares(array $options = [])
+ * @method AddUsers addUsers(array $options = [])
+ * @method DescribeCluster describeCluster(array $options = [])
+ * @method ListCurrentClientVersion listCurrentClientVersion(array $options = [])
+ * @method SubmitJob submitJob(array $options = [])
+ * @method ListVolumes listVolumes(array $options = [])
+ * @method ListNodes listNodes(array $options = [])
+ * @method UpgradeClient upgradeClient(array $options = [])
+ * @method ModifyClusterAttributes modifyClusterAttributes(array $options = [])
+ * @method CreateJobTemplate createJobTemplate(array $options = [])
+ * @method CreateCluster createCluster(array $options = [])
+ * @method DeleteCluster deleteCluster(array $options = [])
+ * @method ListUsers listUsers(array $options = [])
+ * @method ListClusterLogs listClusterLogs(array $options = [])
+ * @method DeleteJobTemplates deleteJobTemplates(array $options = [])
+ * @method RerunJobs rerunJobs(array $options = [])
+ */
+class EHPCApiResolver
+{
+    use ApiResolverTrait;
+}
 
 class V20180412Rpc extends Rpc
 {
@@ -83,15 +178,15 @@ class SetQueue extends V20180412Rpc
 {
 
     /**
-     * @param array $value
+     * @param array $node
      *
      * @return $this
      */
-    public function withNode(array $value)
+    public function withNode(array $node)
     {
-        $this->data['Node'] = $value;
-        foreach ($value as $i => $iValue) {
-            $this->options['query']['Node.' . ($i + 1) . '.Name'] = $value[$i]['Name'];
+        $this->data['Node'] = $node;
+        foreach ($node as $depth1 => $depth1Value) {
+            $this->options['query']['Node.' . ($depth1 + 1) . '.Name'] = $depth1Value['Name'];
         }
 
         return $this;
@@ -265,21 +360,21 @@ class DescribePrice extends V20180412Rpc
 {
 
     /**
-     * @param array $value
+     * @param array $commodities
      *
      * @return $this
      */
-    public function withCommodities(array $value)
+    public function withCommodities(array $commodities)
     {
-        $this->data['Commodities'] = $value;
-        foreach ($value as $i => $iValue) {
-            $this->options['query']['Commodities.' . ($i + 1) . '.Amount'] = $value[$i]['Amount'];
-            $this->options['query']['Commodities.' . ($i + 1) . '.Period'] = $value[$i]['Period'];
-            $this->options['query']['Commodities.' . ($i + 1) . '.NodeType'] = $value[$i]['NodeType'];
-            $this->options['query']['Commodities.' . ($i + 1) . '.SystemDiskCategory'] = $value[$i]['SystemDiskCategory'];
-            $this->options['query']['Commodities.' . ($i + 1) . '.SystemDiskSize'] = $value[$i]['SystemDiskSize'];
-            $this->options['query']['Commodities.' . ($i + 1) . '.InstanceType'] = $value[$i]['InstanceType'];
-            $this->options['query']['Commodities.' . ($i + 1) . '.NetworkType'] = $value[$i]['NetworkType'];
+        $this->data['Commodities'] = $commodities;
+        foreach ($commodities as $depth1 => $depth1Value) {
+            $this->options['query']['Commodities.' . ($depth1 + 1) . '.Amount'] = $depth1Value['Amount'];
+            $this->options['query']['Commodities.' . ($depth1 + 1) . '.Period'] = $depth1Value['Period'];
+            $this->options['query']['Commodities.' . ($depth1 + 1) . '.NodeType'] = $depth1Value['NodeType'];
+            $this->options['query']['Commodities.' . ($depth1 + 1) . '.SystemDiskCategory'] = $depth1Value['SystemDiskCategory'];
+            $this->options['query']['Commodities.' . ($depth1 + 1) . '.SystemDiskSize'] = $depth1Value['SystemDiskSize'];
+            $this->options['query']['Commodities.' . ($depth1 + 1) . '.InstanceType'] = $depth1Value['InstanceType'];
+            $this->options['query']['Commodities.' . ($depth1 + 1) . '.NetworkType'] = $depth1Value['NetworkType'];
         }
 
         return $this;
@@ -395,17 +490,17 @@ class ModifyImageGatewayConfig extends V20180412Rpc
 {
 
     /**
-     * @param array $value
+     * @param array $repo
      *
      * @return $this
      */
-    public function withRepo(array $value)
+    public function withRepo(array $repo)
     {
-        $this->data['Repo'] = $value;
-        foreach ($value as $i => $iValue) {
-            $this->options['query']['Repo.' . ($i + 1) . '.Auth'] = $value[$i]['Auth'];
-            $this->options['query']['Repo.' . ($i + 1) . '.Location'] = $value[$i]['Location'];
-            $this->options['query']['Repo.' . ($i + 1) . '.URL'] = $value[$i]['URL'];
+        $this->data['Repo'] = $repo;
+        foreach ($repo as $depth1 => $depth1Value) {
+            $this->options['query']['Repo.' . ($depth1 + 1) . '.Auth'] = $depth1Value['Auth'];
+            $this->options['query']['Repo.' . ($depth1 + 1) . '.Location'] = $depth1Value['Location'];
+            $this->options['query']['Repo.' . ($depth1 + 1) . '.URL'] = $depth1Value['URL'];
         }
 
         return $this;
@@ -536,31 +631,31 @@ class CreateHybridCluster extends V20180412Rpc
     }
 
     /**
-     * @param array $value
+     * @param array $postInstallScript
      *
      * @return $this
      */
-    public function withPostInstallScript(array $value)
+    public function withPostInstallScript(array $postInstallScript)
     {
-        $this->data['PostInstallScript'] = $value;
-        foreach ($value as $i => $iValue) {
-            $this->options['query']['PostInstallScript.' . ($i + 1) . '.Args'] = $value[$i]['Args'];
-            $this->options['query']['PostInstallScript.' . ($i + 1) . '.Url'] = $value[$i]['Url'];
+        $this->data['PostInstallScript'] = $postInstallScript;
+        foreach ($postInstallScript as $depth1 => $depth1Value) {
+            $this->options['query']['PostInstallScript.' . ($depth1 + 1) . '.Args'] = $depth1Value['Args'];
+            $this->options['query']['PostInstallScript.' . ($depth1 + 1) . '.Url'] = $depth1Value['Url'];
         }
 
         return $this;
     }
 
     /**
-     * @param array $value
+     * @param array $application
      *
      * @return $this
      */
-    public function withApplication(array $value)
+    public function withApplication(array $application)
     {
-        $this->data['Application'] = $value;
-        foreach ($value as $i => $iValue) {
-            $this->options['query']['Application.' . ($i + 1) . '.Tag'] = $value[$i]['Tag'];
+        $this->data['Application'] = $application;
+        foreach ($application as $depth1 => $depth1Value) {
+            $this->options['query']['Application.' . ($depth1 + 1) . '.Tag'] = $depth1Value['Tag'];
         }
 
         return $this;
@@ -612,15 +707,15 @@ class DeleteContainerApps extends V20180412Rpc
 {
 
     /**
-     * @param array $value
+     * @param array $containerApp
      *
      * @return $this
      */
-    public function withContainerApp(array $value)
+    public function withContainerApp(array $containerApp)
     {
-        $this->data['ContainerApp'] = $value;
-        foreach ($value as $i => $iValue) {
-            $this->options['query']['ContainerApp.' . ($i + 1) . '.Id'] = $value[$i]['Id'];
+        $this->data['ContainerApp'] = $containerApp;
+        foreach ($containerApp as $depth1 => $depth1Value) {
+            $this->options['query']['ContainerApp.' . ($depth1 + 1) . '.Id'] = $depth1Value['Id'];
         }
 
         return $this;
@@ -684,15 +779,15 @@ class ListInvocationResults extends V20180412Rpc
 {
 
     /**
-     * @param array $value
+     * @param array $instance
      *
      * @return $this
      */
-    public function withInstance(array $value)
+    public function withInstance(array $instance)
     {
-        $this->data['Instance'] = $value;
-        foreach ($value as $i => $iValue) {
-            $this->options['query']['Instance.' . ($i + 1) . '.Id'] = $value[$i]['Id'];
+        $this->data['Instance'] = $instance;
+        foreach ($instance as $depth1 => $depth1Value) {
+            $this->options['query']['Instance.' . ($depth1 + 1) . '.Id'] = $depth1Value['Id'];
         }
 
         return $this;
@@ -714,15 +809,15 @@ class InvokeShellCommand extends V20180412Rpc
 {
 
     /**
-     * @param array $value
+     * @param array $instance
      *
      * @return $this
      */
-    public function withInstance(array $value)
+    public function withInstance(array $instance)
     {
-        $this->data['Instance'] = $value;
-        foreach ($value as $i => $iValue) {
-            $this->options['query']['Instance.' . ($i + 1) . '.Id'] = $value[$i]['Id'];
+        $this->data['Instance'] = $instance;
+        foreach ($instance as $depth1 => $depth1Value) {
+            $this->options['query']['Instance.' . ($depth1 + 1) . '.Id'] = $depth1Value['Id'];
         }
 
         return $this;
@@ -768,15 +863,15 @@ class StopNodes extends V20180412Rpc
 {
 
     /**
-     * @param array $value
+     * @param array $instance
      *
      * @return $this
      */
-    public function withInstance(array $value)
+    public function withInstance(array $instance)
     {
-        $this->data['Instance'] = $value;
-        foreach ($value as $i => $iValue) {
-            $this->options['query']['Instance.' . ($i + 1) . '.Id'] = $value[$i]['Id'];
+        $this->data['Instance'] = $instance;
+        foreach ($instance as $depth1 => $depth1Value) {
+            $this->options['query']['Instance.' . ($depth1 + 1) . '.Id'] = $depth1Value['Id'];
         }
 
         return $this;
@@ -802,15 +897,15 @@ class StartNodes extends V20180412Rpc
 {
 
     /**
-     * @param array $value
+     * @param array $instance
      *
      * @return $this
      */
-    public function withInstance(array $value)
+    public function withInstance(array $instance)
     {
-        $this->data['Instance'] = $value;
-        foreach ($value as $i => $iValue) {
-            $this->options['query']['Instance.' . ($i + 1) . '.Id'] = $value[$i]['Id'];
+        $this->data['Instance'] = $instance;
+        foreach ($instance as $depth1 => $depth1Value) {
+            $this->options['query']['Instance.' . ($depth1 + 1) . '.Id'] = $depth1Value['Id'];
         }
 
         return $this;
@@ -890,16 +985,16 @@ class ModifyUserPasswords extends V20180412Rpc
 {
 
     /**
-     * @param array $value
+     * @param array $user
      *
      * @return $this
      */
-    public function withUser(array $value)
+    public function withUser(array $user)
     {
-        $this->data['User'] = $value;
-        foreach ($value as $i => $iValue) {
-            $this->options['query']['User.' . ($i + 1) . '.Password'] = $value[$i]['Password'];
-            $this->options['query']['User.' . ($i + 1) . '.Name'] = $value[$i]['Name'];
+        $this->data['User'] = $user;
+        foreach ($user as $depth1 => $depth1Value) {
+            $this->options['query']['User.' . ($depth1 + 1) . '.Password'] = $depth1Value['Password'];
+            $this->options['query']['User.' . ($depth1 + 1) . '.Name'] = $depth1Value['Name'];
         }
 
         return $this;
@@ -935,16 +1030,16 @@ class ModifyUserGroups extends V20180412Rpc
 {
 
     /**
-     * @param array $value
+     * @param array $user
      *
      * @return $this
      */
-    public function withUser(array $value)
+    public function withUser(array $user)
     {
-        $this->data['User'] = $value;
-        foreach ($value as $i => $iValue) {
-            $this->options['query']['User.' . ($i + 1) . '.Name'] = $value[$i]['Name'];
-            $this->options['query']['User.' . ($i + 1) . '.Group'] = $value[$i]['Group'];
+        $this->data['User'] = $user;
+        foreach ($user as $depth1 => $depth1Value) {
+            $this->options['query']['User.' . ($depth1 + 1) . '.Name'] = $depth1Value['Name'];
+            $this->options['query']['User.' . ($depth1 + 1) . '.Group'] = $depth1Value['Group'];
         }
 
         return $this;
@@ -984,23 +1079,25 @@ class SetAutoScaleConfig extends V20180412Rpc
 {
 
     /**
-     * @param array $value
+     * @param array $queues
      *
      * @return $this
      */
-    public function withQueues(array $value)
+    public function withQueues(array $queues)
     {
-        $this->data['Queues'] = $value;
-        foreach ($value as $i => $iValue) {
-            $this->options['query']['Queues.' . ($i + 1) . '.SpotStrategy'] = $value[$i]['SpotStrategy'];
-            $this->options['query']['Queues.' . ($i + 1) . '.QueueName'] = $value[$i]['QueueName'];
-            foreach ($value[$i]['InstanceTypess'] as $j => $jValue) {
-                $this->options['query']['Queues.' . ($i + 1) . '.InstanceTypes.' . ($j + 1)] = $jValue;
+        $this->data['Queues'] = $queues;
+        foreach ($queues as $depth1 => $depth1Value) {
+            $this->options['query']['Queues.' . ($depth1 + 1) . '.SpotStrategy'] = $depth1Value['SpotStrategy'];
+            $this->options['query']['Queues.' . ($depth1 + 1) . '.QueueName'] = $depth1Value['QueueName'];
+            foreach ($depth1Value['InstanceTypes'] as $depth2 => $depth2Value) {
+                $this->options['query']['Queues.' . ($depth1 + 1) . '.InstanceTypes.' . ($depth2 + 1) . '.SpotStrategy'] = $depth2Value['SpotStrategy'];
+                $this->options['query']['Queues.' . ($depth1 + 1) . '.InstanceTypes.' . ($depth2 + 1) . '.InstanceType'] = $depth2Value['InstanceType'];
+                $this->options['query']['Queues.' . ($depth1 + 1) . '.InstanceTypes.' . ($depth2 + 1) . '.SpotPriceLimit'] = $depth2Value['SpotPriceLimit'];
             }
-            $this->options['query']['Queues.' . ($i + 1) . '.InstanceType'] = $value[$i]['InstanceType'];
-            $this->options['query']['Queues.' . ($i + 1) . '.EnableAutoGrow'] = $value[$i]['EnableAutoGrow'];
-            $this->options['query']['Queues.' . ($i + 1) . '.SpotPriceLimit'] = $value[$i]['SpotPriceLimit'];
-            $this->options['query']['Queues.' . ($i + 1) . '.EnableAutoShrink'] = $value[$i]['EnableAutoShrink'];
+            $this->options['query']['Queues.' . ($depth1 + 1) . '.InstanceType'] = $depth1Value['InstanceType'];
+            $this->options['query']['Queues.' . ($depth1 + 1) . '.EnableAutoGrow'] = $depth1Value['EnableAutoGrow'];
+            $this->options['query']['Queues.' . ($depth1 + 1) . '.SpotPriceLimit'] = $depth1Value['SpotPriceLimit'];
+            $this->options['query']['Queues.' . ($depth1 + 1) . '.EnableAutoShrink'] = $depth1Value['EnableAutoShrink'];
         }
 
         return $this;
@@ -1080,15 +1177,15 @@ class DeleteUsers extends V20180412Rpc
 {
 
     /**
-     * @param array $value
+     * @param array $user
      *
      * @return $this
      */
-    public function withUser(array $value)
+    public function withUser(array $user)
     {
-        $this->data['User'] = $value;
-        foreach ($value as $i => $iValue) {
-            $this->options['query']['User.' . ($i + 1) . '.Name'] = $value[$i]['Name'];
+        $this->data['User'] = $user;
+        foreach ($user as $depth1 => $depth1Value) {
+            $this->options['query']['User.' . ($depth1 + 1) . '.Name'] = $depth1Value['Name'];
         }
 
         return $this;
@@ -1120,15 +1217,15 @@ class DeleteNodes extends V20180412Rpc
 {
 
     /**
-     * @param array $value
+     * @param array $instance
      *
      * @return $this
      */
-    public function withInstance(array $value)
+    public function withInstance(array $instance)
     {
-        $this->data['Instance'] = $value;
-        foreach ($value as $i => $iValue) {
-            $this->options['query']['Instance.' . ($i + 1) . '.Id'] = $value[$i]['Id'];
+        $this->data['Instance'] = $instance;
+        foreach ($instance as $depth1 => $depth1Value) {
+            $this->options['query']['Instance.' . ($depth1 + 1) . '.Id'] = $depth1Value['Id'];
         }
 
         return $this;
@@ -1154,15 +1251,15 @@ class ResetNodes extends V20180412Rpc
 {
 
     /**
-     * @param array $value
+     * @param array $instance
      *
      * @return $this
      */
-    public function withInstance(array $value)
+    public function withInstance(array $instance)
     {
-        $this->data['Instance'] = $value;
-        foreach ($value as $i => $iValue) {
-            $this->options['query']['Instance.' . ($i + 1) . '.Id'] = $value[$i]['Id'];
+        $this->data['Instance'] = $instance;
+        foreach ($instance as $depth1 => $depth1Value) {
+            $this->options['query']['Instance.' . ($depth1 + 1) . '.Id'] = $depth1Value['Id'];
         }
 
         return $this;
@@ -1210,17 +1307,17 @@ class AddUsers extends V20180412Rpc
 {
 
     /**
-     * @param array $value
+     * @param array $user
      *
      * @return $this
      */
-    public function withUser(array $value)
+    public function withUser(array $user)
     {
-        $this->data['User'] = $value;
-        foreach ($value as $i => $iValue) {
-            $this->options['query']['User.' . ($i + 1) . '.Password'] = $value[$i]['Password'];
-            $this->options['query']['User.' . ($i + 1) . '.Name'] = $value[$i]['Name'];
-            $this->options['query']['User.' . ($i + 1) . '.Group'] = $value[$i]['Group'];
+        $this->data['User'] = $user;
+        foreach ($user as $depth1 => $depth1Value) {
+            $this->options['query']['User.' . ($depth1 + 1) . '.Password'] = $depth1Value['Password'];
+            $this->options['query']['User.' . ($depth1 + 1) . '.Name'] = $depth1Value['Name'];
+            $this->options['query']['User.' . ($depth1 + 1) . '.Group'] = $depth1Value['Group'];
         }
 
         return $this;
@@ -1504,31 +1601,31 @@ class CreateCluster extends V20180412Rpc
     }
 
     /**
-     * @param array $value
+     * @param array $postInstallScript
      *
      * @return $this
      */
-    public function withPostInstallScript(array $value)
+    public function withPostInstallScript(array $postInstallScript)
     {
-        $this->data['PostInstallScript'] = $value;
-        foreach ($value as $i => $iValue) {
-            $this->options['query']['PostInstallScript.' . ($i + 1) . '.Args'] = $value[$i]['Args'];
-            $this->options['query']['PostInstallScript.' . ($i + 1) . '.Url'] = $value[$i]['Url'];
+        $this->data['PostInstallScript'] = $postInstallScript;
+        foreach ($postInstallScript as $depth1 => $depth1Value) {
+            $this->options['query']['PostInstallScript.' . ($depth1 + 1) . '.Args'] = $depth1Value['Args'];
+            $this->options['query']['PostInstallScript.' . ($depth1 + 1) . '.Url'] = $depth1Value['Url'];
         }
 
         return $this;
     }
 
     /**
-     * @param array $value
+     * @param array $application
      *
      * @return $this
      */
-    public function withApplication(array $value)
+    public function withApplication(array $application)
     {
-        $this->data['Application'] = $value;
-        foreach ($value as $i => $iValue) {
-            $this->options['query']['Application.' . ($i + 1) . '.Tag'] = $value[$i]['Tag'];
+        $this->data['Application'] = $application;
+        foreach ($application as $depth1 => $depth1Value) {
+            $this->options['query']['Application.' . ($depth1 + 1) . '.Tag'] = $depth1Value['Tag'];
         }
 
         return $this;
