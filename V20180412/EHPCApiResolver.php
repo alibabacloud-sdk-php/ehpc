@@ -8,6 +8,7 @@ use AlibabaCloud\Rpc;
 /**
  * Resolve Api based on the method name.
  *
+ * @method QueryServicePackAndPrice queryServicePackAndPrice(array $options = [])
  * @method DescribeJob describeJob(array $options = [])
  * @method GetClusterVolumes getClusterVolumes(array $options = [])
  * @method UpdateClusterVolumes updateClusterVolumes(array $options = [])
@@ -112,6 +113,10 @@ class V20180412Rpc extends Rpc
 
     /** @var string */
     public $serviceCode = 'ehs';
+}
+
+class QueryServicePackAndPrice extends V20180412Rpc
+{
 }
 
 /**
@@ -1208,6 +1213,8 @@ class EditJobTemplate extends V20180412Rpc
  * @method $this withJobQueue($value)
  * @method string getImageOwnerAlias()
  * @method $this withImageOwnerAlias($value)
+ * @method string getSystemDiskType()
+ * @method $this withSystemDiskType($value)
  * @method string getVSwitchId()
  * @method $this withVSwitchId($value)
  * @method string getPeriodUnit()
@@ -1541,6 +1548,8 @@ class CreateJobTemplate extends V20180412Rpc
  * @method $this withVolumeType($value)
  * @method string getDeployMode()
  * @method $this withDeployMode($value)
+ * @method string getSystemDiskType()
+ * @method $this withSystemDiskType($value)
  * @method string getEcsOrderManagerCount()
  * @method string getResourceGroupId()
  * @method $this withResourceGroupId($value)
